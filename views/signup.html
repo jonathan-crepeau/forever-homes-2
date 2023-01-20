@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles/main.css">
     <link rel="stylesheet" href="/styles/signup.css">
     <script defer src="/scripts/signup.js"></script>
     <title>Forever Homes 2</title>
@@ -20,6 +21,27 @@
     </header>
     <main>
         <h1>Signup</h1>
+        <div id="form-container">
+            <form action="/views/signup.js" id="signup-form">
+                <div class="form-group">
+                    <label for="first-name">First Name:</label>
+                    <input type="text" id="first-name" name="firstName" placeholder="first name">
+                </div>
+                <div class="form-group">
+                    <label for="last-name">Last Name:</label>
+                    <input type="text" id="last-name" name="lastName" placeholder="last name">
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" placeholder="email">
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" placeholder="password">
+                </div>
+                <input type="submit" value="Signup!">
+            </form>
+        </div>
     </main>
 </body>
 </html>
