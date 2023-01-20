@@ -7,12 +7,14 @@ const PORT = process.env.PORT;
 
 import {router as viewsRouter} from './routes/views';
 import {router as authRouter} from './routes/auth';
+import {logger} from './middleware/utils';
 
 
 // SECTION Serve Public Directory Client-Side
 app.use(express.static('public'));
 
 // SECTION - Middleware
+app.use(logger);
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 
