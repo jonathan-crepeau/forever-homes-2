@@ -1,5 +1,5 @@
 import mongoose from 'mongoose';
-const mdb_URI="mongodb+srv://jonathan-crepeau:my-password@forever2cluster.8vrm9tr.mongodb.net/foreverhomes2?retryWrites=true&w=majority"
+const mdb_URI="mongodb+srv://jonathan-crepeau:my-password@forever2cluster.8vrm9tr.mongodb.net/foreverhomes2?retryWrites=true&w=majority";
 
 mongoose.set('strictQuery', true);
 mongoose.connect(mdb_URI, {
