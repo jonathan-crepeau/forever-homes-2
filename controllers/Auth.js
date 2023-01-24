@@ -135,5 +135,20 @@ const deleteSession = (req, res) => {
     });
 }
 
+// GET Verify - Check if logged in
+const verify = (req, res) => {
+    if (req.session.currentUser) {
+        res.status(200).json({
+            status: 200,
+            message: "Authorized",
+            userId: req.session.currentUser
+        });
+    }
+    res.status(401).json({
+        status: 401,
+        message: "You are not authenticated"
+    });
+}
 
-export { test, signup, createSession, deleteSession }
+
+export { test, signup, createSession, deleteSession, verify }
