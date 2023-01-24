@@ -1,29 +1,104 @@
+:root {
+    --orange: #FF4600;
+    --blue: #0045FF;
+}
+
 * {
     padding: 0;
-    margin: 0;
+    margin: 0
 }
 
 body {
-    height: calc(100vh + 20px);
-    width: 100%;
+    height: calc(100vh + 30px);
 }
 
-header { 
-    background-color: lightcoral;
+
+/* SECTION - <header> element: */
+
+header {
     height: 100px;
-    width: 100%;
+    background-color: var(--blue);
+
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: flex-end;
 }
+
+nav {
+    height: 40px;
+    width: 1000px;
+    margin: 0 auto;
+    /* background-color: white; */
+}
+
+#drop-down {
+    float: right;
+    height: 129px;
+    width: 250px;
+    /* outline: var(--orange) 1px solid; */
+
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    font-weight: 700;
+    text-align: center;
+    overflow: hidden;
+    border-bottom-left-radius: 5%;
+
+    transition: height 0.3s ease;
+    -webkit-transition: height 0.3s ease;
+    -moz-transition: height 0.3s ease;
+}
+
+#drop-down.closed {
+    height: 40px;
+}
+
+.nav-link {
+    border-bottom: 3px solid black;
+}
+
+#drop-down li a {
+    text-decoration: none;
+    display: block;
+    height: 40px;
+    line-height: 40px;
+
+    background-color: var(--blue);
+    color: white;
+}
+
+#drop-down.closed li:first-child a:after {
+    content: "\25BC";
+    float: right;
+    width: 50px;
+    font-size: 1.2rem;
+    margin-left: -50px;
+}
+
+#drop-down li:first-hcild a:after {
+    content: "\25B2";
+    float: right;
+    width: 50px;
+    font-size: 1.2rem;
+    margin-left: -50px;
+}
+
+/* SECTION - <main> element: */
 
 main {
     height: calc(100vh - 100px);
-    width: 800px;
+    width: 1000px;
     margin: 0 auto;
-    border: 1px blue solid;
+    outline: 1px black solid;
 }
 
+
+/* SECTION - <footer> element: */
+
 footer {
-    background-color: black;
+    height: 30px;
+    line-height: 30px;
+    background-color: grey;
     color: white;
     text-align: center;
 }
-
