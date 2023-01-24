@@ -1,6 +1,7 @@
-console.log('search.js reporting for duty..');
-
+// console.log('search.js reporting for duty..');
 const logoutButton = document.getElementById('logout-btn');
+verifyUser();
+petTest();
 
 const handleLogoutClick = (event) => {
     event.preventDefault();
@@ -17,20 +18,26 @@ const handleLogoutClick = (event) => {
         })
         .catch((error) => console.log(error));
 }
-
 logoutButton.addEventListener('click', handleLogoutClick);
 
-const verifyUser = () => {
+function verifyUser() {
     fetch('http://localhost:3000/api/v1/verify', {
         method: "GET"
     })
         .then((response) => response.json())
         .then((data) => {
-            if (data.status = 401) {
-                window.location = '/login';
+            if (data.status == 401) {
+                window.location = '/login'
             }
         })
-        .catch((error) => console.log(error));
+        .catch((error) => console.log(error));    
 }
 
-verifyUser();
+function petTest() {
+    fetch('http://localhost:3000/petfinder/v1/test', {
+        method: "GET"
+    })
+        .then((response) => response.json())
+        .then((data) => console.log(data))
+        .catch((error) => console.log(error));
+}

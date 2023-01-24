@@ -9,6 +9,7 @@ const PORT = process.env.PORT;
 
 import {router as viewsRouter} from './routes/views';
 import {router as authRouter} from './routes/auth';
+import {router as petfinderRouter} from './routes/petfinder';
 import {logger} from './middleware/utils';
 
 
@@ -38,6 +39,9 @@ app.use('/', viewsRouter);
 
 // SECTION API Endpoint Routes
 app.use('/api/v1', authRouter);
+
+// SECTION Petfinder API
+app.use('/petfinder/v1', petfinderRouter);
 
 // SECTION Server Start
 app.listen(PORT, () => console.log(`Application listening on ${PORT}..`));
