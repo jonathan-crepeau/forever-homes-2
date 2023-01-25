@@ -44,7 +44,7 @@ const handleSubmitClick = (event) => {
             .then((response) => response.json())
             .then((data) => {
                 console.log(data);
-                window.location = '/profile';
+                window.location = '/search';
             });
     }
 }

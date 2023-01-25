@@ -1,5 +1,6 @@
 // console.log('search.js reporting for duty..');
 const logoutButton = document.getElementById('logout-btn');
+
 verifyUser();
 petTest();
 
@@ -26,12 +27,13 @@ function verifyUser() {
     })
         .then((response) => response.json())
         .then((data) => {
-            if (data.status == 401) {
+            if (data.status === 401) {
                 window.location = '/login'
             }
         })
-        .catch((error) => console.log(error));    
+        .catch((error) => console.log(error));
 }
+
 
 function petTest() {
     fetch('http://localhost:3000/petfinder/v1/test', {

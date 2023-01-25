@@ -75,7 +75,7 @@ nav {
     margin-left: -50px;
 }
 
-#drop-down li:first-hcild a:after {
+#drop-down li:first-child a:after {
     content: "\25B2";
     float: right;
     width: 50px;
