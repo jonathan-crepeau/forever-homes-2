@@ -7,10 +7,10 @@ import session from 'express-session';
 import MongoStore from 'connect-mongo';
 const PORT = process.env.PORT;
 
-import {router as viewsRouter} from './routes/views';
-import {router as authRouter} from './routes/auth';
-import {router as petfinderRouter} from './routes/petfinder';
-import {logger} from './middleware/utils';
+import {router as viewsRouter} from './routes/views.js';
+import {router as authRouter} from './routes/auth.js';
+import {router as petfinderRouter} from './routes/petfinder.js';
+import {logger} from './middleware/utils.js';
 
 
 // SECTION Serve Public Directory Client-Side
