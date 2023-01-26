@@ -1,17 +1,18 @@
 // console.log('search.js reporting for duty..');
 // SECTION - Variables (bindings):
 const logoutButton = document.getElementById('logout-btn');
+logoutButton.addEventListener('click', handleLogoutClick);
+
+let accessToken = {};
 let accessTokenTimestamp;
-// let accessToken; --> instead, try saving to .env (process.env.ACCESS_TOKEN = XXX)
 let petData;
 
 
 // SECTION - Functions
 verifyUser();
-petTest();
-// getToken();
+getToken();
 
-const handleLogoutClick = (event) => {
+function handleLogoutClick(event) {
     event.preventDefault();
     console.log('logout button clicked.');
 
@@ -26,7 +27,6 @@ const handleLogoutClick = (event) => {
         })
         .catch((error) => console.log(error));
 }
-logoutButton.addEventListener('click', handleLogoutClick);
 
 function verifyUser() {
     fetch('http://localhost:3000/api/v1/verify', {
@@ -50,15 +50,30 @@ function petTest() {
         .catch((error) => console.log(error));
 }
 
-function getToken() {
-    // make fetch call to Petfinder controller in controllers/Petfinder
-    // get response + set timestamp in 'accessTokenTimestamp' variable when received
-    // parse response for specific token, try and set to .env file (process.env.ACCESS_TOKEN = ...) instead of 
-
-    fetch('http://localhost:3000/petfinder/v1/getToken', {
+async function getToken() {
+    await fetch('http://localhost:3000/petfinder/v1/token', {
         method: 'GET'
     })
         .then((response) => response.json())
         .then((data) => console.log(data))
         .catch((error) => console.log(error));
+
+    getPetData();
+}
+
+function getPetData() {
+    fetch('http://localhost:3000/petfinder/v1/petData', {
+        method: 'GET'
+        // body: JSON.stringify(accessToken)
+    })
+        .then((response) => response.json())
+        .then((data) => console.log(data))
+        .catch((error) => console.log(error));
+}
+
+function handleTokenResponse(inputObj) {
+    // console.log(inputObj);
+    accessToken['token'] = inputObj.access_token;
+    accessTokenTimestamp = Date.now();
+    // console.log(accessToken);
 }

@@ -16,7 +16,7 @@ import {logger} from './middleware/utils.js';
 // SECTION Serve Public Directory Client-Side
 app.use(express.static('public'));
 
-// SECTION - Middleware
+// SECTION - Middlewaret
 app.use(logger);
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
@@ -40,7 +40,7 @@ app.use('/', viewsRouter);
 // SECTION API Endpoint Routes
 app.use('/api/v1', authRouter);
 
-// SECTION Petfinder API
+// SECTION Petfinder API Routes
 app.use('/petfinder/v1', petfinderRouter);
 
 // SECTION Server Start

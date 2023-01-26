@@ -1,12 +1,15 @@
 import fetch from "node-fetch";
+let accessToken;
 
 const test = (req, res) => {
     res.json({status:200, message:"Test function for Petfinder controller successful.."});
 }
 
-const getToken = (req, res) => {
-
-    fetch('https://api.petfinder.com/v2/oauth2/token', {
+const getToken = async (req, res) => {
+    let responseObj;
+    let testObj = {name: 'Jonathan'};
+    
+    await fetch('https://api.petfinder.com/v2/oauth2/token', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/x-www-form-urlencoded'
@@ -15,13 +18,34 @@ const getToken = (req, res) => {
     })
         .then((response) => response.json())
         .then((data) => {
-            process.env.ACCESS_TOKEN = data.access_token;
-            console.log('=========');
-            console.log(process.env.ACCESS_TOKEN);
+            accessToken = data.access_token;
+            // responseObj = data;
+            // console.log(data);
         })
         .catch((error) => console.log(error));
 
+    // res.json(responseObj);
+    res.json({
+        status: 200,
+        message: "Successful call to Petfinder API for token."
+    });
 }
 
+const petData = async (req, res) => {
+    let responseObj;
+    await fetch('https://api.petfinder.com/v2/animals', {
+        method: 'GET',
+        headers: {
+            'Authorization': `Bearer ${accessToken}`
+        }
+    })
+        .then((response) => response.json())
+        .then((data) => {
+            responseObj = data;
+        })
+        .catch((error) => console.log(error));
 
-export { test, getToken }
+    res.json(responseObj);
+}
+
+export { test, getToken, petData }
