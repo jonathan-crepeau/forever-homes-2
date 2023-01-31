@@ -26,6 +26,11 @@ main {
     width: 600px;
     border-top-left-radius: 40px;
     border-top-right-radius: 40px;
+
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    justify-content: center;
 }
 
 .card__info {
@@ -67,3 +72,7 @@ main {
     font-size: 2rem;
 }
 
+img {
+    max-height: 380px;
+    max-width: 580px;
+}

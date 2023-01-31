@@ -77,24 +77,29 @@ function getPetData() {
         .catch((error) => console.log(error));
 }
 
-
 function createCards(inputArray) {
     for (let i = 0; i < inputArray.length - 1; i++) {
+        let photoSource;
+        if (!inputArray[i].primary_photo_cropped) {
+            photoSource = "https://images.unsplash.com/photo-1517849845537-4d257902454a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=735&q=80";
+        } else {
+            photoSource = inputArray[i].primary_photo_cropped['small'];
+        }
         const card = `
-            <div id=${inputArray[i].id} class="card closed">
+            <div class="card closed">
                 <div class="card__photo">
-                    <h1>${'Animal ID: ', inputArray[i].id}</h1>
+                    <img src=${photoSource} />
                 </div>
                 <div class="card__info closed">
                     <div class="card__header">
-                        <h2 class="card__title">[[ TITLE ]]</h2>
+                        <h2 class="card__title">${inputArray[i].name}</h2>
                         <p class="card__btn">&#9660</p>
                     </div>
                     <div class="card__writtenDesc"></div>
                 </div>
             </div>
         `
-        main.insertAdjacentHTML('afterbegin', card);
+    main.insertAdjacentHTML('beforeend', card)    
     }
 }
 
