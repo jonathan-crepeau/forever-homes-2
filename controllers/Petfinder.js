@@ -7,7 +7,6 @@ const test = (req, res) => {
 
 const getToken = async (req, res) => {
     let responseObj;
-    let testObj = {name: 'Jonathan'};
     
     await fetch('https://api.petfinder.com/v2/oauth2/token', {
         method: 'POST',
@@ -19,8 +18,6 @@ const getToken = async (req, res) => {
         .then((response) => response.json())
         .then((data) => {
             accessToken = data.access_token;
-            // responseObj = data;
-            // console.log(data);
         })
         .catch((error) => console.log(error));
 
