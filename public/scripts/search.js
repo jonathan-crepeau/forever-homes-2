@@ -1,6 +1,7 @@
 // console.log('search.js reporting for duty..');
 
 // SECTION - Variables (bindings):
+// let tokenTimeStamp = 0;
 let petData;
 const main = document.querySelector('main');
 const logoutButton = document.getElementById('logout-btn');
@@ -10,10 +11,6 @@ const logoutButton = document.getElementById('logout-btn');
 logoutButton.addEventListener('click', handleLogoutClick);
 main.addEventListener('click', expandCardClick);
 
-
-// SECTION - Functions Calls
-verifyUser();
-getToken();
 
 
 // SECTION - Function Declarations
@@ -66,15 +63,24 @@ async function getToken() {
     getPetData();
 }
 
+// function getPetData() {
+//     fetch('http://localhost:3000/petfinder/v1/petData', {
+//         method: 'GET'
+//         // body: JSON.stringify(accessToken)
+//     })
+//         .then((response) => response.json())
+//         .then((data) => petData = data.animals)
+//         .then(petData => createCards(petData))
+//         .catch((error) => console.log(error));
+// }
+
 function getPetData() {
     fetch('http://localhost:3000/petfinder/v1/petData', {
         method: 'GET'
-        // body: JSON.stringify(accessToken)
     })
         .then((response) => response.json())
-        .then((data) => petData = data.animals)
-        .then(petData => createCards(petData))
-        .catch((error) => console.log(error));
+        .then((data) => console.log(data))
+        .catch((error) => console.log(error))
 }
 
 function createCards(inputArray) {
@@ -110,3 +116,8 @@ function expandCardClick(event) {
         event.target.closest('.card__info').classList.toggle('closed');
     }
 }
+
+
+// SECTION - Functions Calls
+verifyUser();
+getToken();
