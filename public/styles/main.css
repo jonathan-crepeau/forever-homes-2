@@ -43,6 +43,7 @@ nav {
     text-align: center;
     overflow: hidden;
     border-bottom-left-radius: 5%;
+    border-bottom-right-radius: 5%;
 
     transition: height 0.3s ease;
     -webkit-transition: height 0.3s ease;
@@ -89,7 +90,7 @@ main {
     min-height: calc(100vh - 100px);
     width: 800px;
     margin: 0 auto;
-    outline: 1px black solid;
+    /* outline: 1px black solid; */
 }
 
 
