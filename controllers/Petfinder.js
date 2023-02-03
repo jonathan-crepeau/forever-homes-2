@@ -3,7 +3,15 @@ let tokenTimeStamp = 0;
 let accessToken;
 
 const test = (req, res) => {
-    res.json({status:200, message:"Test function for Petfinder controller successful.."});
+    // res.json({status:200, message:"Test function for Petfinder controller successful.."});
+    // console.log(req.body);
+    let data = req.body;
+    let string = '?';
+    for (let x in data) {
+        console.log(data[x].key, data[x].value);
+        string = string + `${data[x].key}=${data[x].value}&`;
+    }
+    res.json({string});
 }
 
 const getToken = async (req, res) => {
@@ -33,7 +41,7 @@ const getToken = async (req, res) => {
     }
 }
 
-const petData = async (req, res) => {
+const basePetData = async (req, res) => {
     let responseObj;
     await fetch('https://api.petfinder.com/v2/animals', {
         method: 'GET',
@@ -50,4 +58,29 @@ const petData = async (req, res) => {
     res.json(responseObj);
 }
 
-export { test, getToken, petData }
+const queryPetData = async (req, res) => {
+    console.log(req.body);
+    let data = req.body;
+    let string = '?';
+    for (let x in data) {
+        string = string + `${data[x].key}=${data[x].value}&`;
+    }
+
+    let responseObj;
+    console.log(string);
+    await fetch(`https://api.petfinder.com/v2/animals/${string}`, {
+        method: 'GET',
+        headers: {
+            'Authorization': `Bearer ${accessToken}`
+        }
+    })
+        .then((response) => response.json())
+        .then((data) => {
+            responseObj = data;
+        })
+        .catch((error) => console.log(error));
+    
+    res.json(responseObj);
+}
+
+export { test, getToken, basePetData, queryPetData }

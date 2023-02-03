@@ -63,27 +63,33 @@ async function getToken() {
     getPetData();
 }
 
-// function getPetData() {
-//     fetch('http://localhost:3000/petfinder/v1/petData', {
-//         method: 'GET'
-//         // body: JSON.stringify(accessToken)
-//     })
-//         .then((response) => response.json())
-//         .then((data) => petData = data.animals)
-//         .then(petData => createCards(petData))
-//         .catch((error) => console.log(error));
-// }
-
-function getPetData() {
-    fetch('http://localhost:3000/petfinder/v1/petData', {
-        method: 'GET'
-    })
-        .then((response) => response.json())
-        .then((data) => console.log(data))
-        .catch((error) => console.log(error))
+function getPetData(bodyObj) {
+    if (bodyObj) {
+        fetch('http://localhost:3000/petfinder/v1/queryPetData', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(bodyObj)
+        })
+            .then((response) => response.json())
+            // .then((data) => console.log(data))
+            .then((data) => petData = data.animals)
+            .then(petData => createCards(petData))
+            .catch((error) => console.log(error));
+    } else {
+        fetch('http://localhost:3000/petfinder/v1/petData', {
+            method: 'GET'
+        })
+            .then((response) => response.json())
+            .then((data) => petData = data.animals)
+            .then(petData => createCards(petData))
+            .catch((error) => console.log(error))
+    }
 }
 
 function createCards(inputArray) {
+    main.innerHTML = '';
     for (let i = 0; i < inputArray.length - 1; i++) {
         let photoSource;
         if (!inputArray[i].primary_photo_cropped) {
@@ -117,7 +123,26 @@ function expandCardClick(event) {
     }
 }
 
+function createQueryString(input) {
+
+    fetch('http://localhost:3000/petfinder/v1/test', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(input)
+    })
+        .then((response) => response.json())
+        .then((data) => console.log(data))
+        .catch((error) => console.log(error));
+}
+
+const testObj = {
+    0: {key: 'type', value: 'dog'},
+    1: {key: 'color', value: 'black'}
+}
 
 // SECTION - Functions Calls
 verifyUser();
 getToken();
+
