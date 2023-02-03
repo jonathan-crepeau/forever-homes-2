@@ -3,13 +3,16 @@
 // SECTION - Variables (bindings):
 // let tokenTimeStamp = 0;
 let petData;
-const main = document.querySelector('main');
+// const main = document.querySelector('main');
+const resultsContainer = document.getElementById('result-cont');
 const logoutButton = document.getElementById('logout-btn');
+const searchButton = document.getElementById('search-title');
 
 
 // SECTION - Event Listeners
 logoutButton.addEventListener('click', handleLogoutClick);
-main.addEventListener('click', expandCardClick);
+resultsContainer.addEventListener('click', expandCardClick);
+searchButton.addEventListener('click', searchBtnClick);
 
 
 
@@ -28,6 +31,19 @@ function handleLogoutClick(event) {
             }
         })
         .catch((error) => console.log(error));
+}
+
+function expandCardClick(event) {
+    if (event.target.matches('.card__btn')) {
+        // console.log('Expand card.');
+        event.target.closest('.card').classList.toggle('closed');
+        event.target.closest('.card__info').classList.toggle('closed');
+    }
+}
+
+function searchBtnClick(event) {
+    event.preventDefault();
+    document.getElementById('search-drop-down').classList.toggle('closed');
 }
 
 function verifyUser() {
@@ -89,7 +105,7 @@ function getPetData(bodyObj) {
 }
 
 function createCards(inputArray) {
-    main.innerHTML = '';
+    resultsContainer.innerHTML = '';
     for (let i = 0; i < inputArray.length - 1; i++) {
         let photoSource;
         if (!inputArray[i].primary_photo_cropped) {
@@ -111,17 +127,11 @@ function createCards(inputArray) {
                 </div>
             </div>
         `
-    main.insertAdjacentHTML('beforeend', card)    
+    resultsContainer.insertAdjacentHTML('beforeend', card)    
     }
 }
 
-function expandCardClick(event) {
-    if (event.target.matches('.card__btn')) {
-        // console.log('Expand card.');
-        event.target.closest('.card').classList.toggle('closed');
-        event.target.closest('.card__info').classList.toggle('closed');
-    }
-}
+
 
 function createQueryString(input) {
 

@@ -21,20 +21,29 @@
         </nav>
     </header>
     <main>
-        
-        <!-- <div class="card closed">
-            <div class="card__photo">
-                <h1>[[ PHOTO ]]</h1>
-            </div>
-            <div class="card__info closed">
-                <div class="card__header">
-                    <h2 class="card__title">[[ TITLE ]]</h2>
-                    <p class="card__btn">&#9660</p>
+        <div id="search-bar">
+            <div id="search-drop-down" class="closed">
+                <p id="search-title" class="search-section">Refine Search <span>&#9660</span></p>
+                <div class="search-section">
+                    <input type="text" id="location" class="query-param">
                 </div>
-                <div class="card__writtenDesc"></div>
+                <div class="search-section">
+                    <input type="text" id="type" class="query-param" list="types">
+                    <datalist id="types">
+                        <option value="Dog"></option>
+                        <option value="Cat"></option>
+                        <option value="Rabbit"></option>
+                        <option value="Small & Furry"></option>
+                        <option value="Horse"></option>
+                        <option value="Bird"></option>
+                        <option value="Scales, Fins & Other"></option>
+                        <option value="Barnyard"></option>
+                    </datalist>
+                </div>
             </div>
-        </div> -->
 
+        </div>
+        <div id="result-cont"></div>
     </main>
     <footer>Jonathan T Crepeau</footer>
 </body>

@@ -1,10 +1,55 @@
 
-main {
+
+#search-bar {
+    background-color: lightpink;
+    height: 40px;
+    line-height: 40px;
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: flex-start;
+}
+
+#result-cont {
     display: flex;
     flex-flow: column nowrap;
     align-items: center;
     justify-content: center;
 }
+
+#search-drop-down {
+    background-color: lightpink;
+    height: 149px;
+    width: 200px;
+    text-align: center;
+    overflow: hidden;
+    cursor: pointer;
+    border-bottom-right-radius: 5%;
+
+    transition: height 0.3s ease;
+}
+
+#search-drop-down.closed {
+    height: 40px;
+}
+
+#search-title:hover {
+    font-size: 105%;
+    transition: font-size 0.4s ease;
+}
+
+#search-title:hover span{
+    color: white;
+    transition: color 0.2s ease;
+}
+
+.search-section {
+    border-bottom: 2px black solid;
+}
+
 
 .card {
     outline: 2px red solid;
