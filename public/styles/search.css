@@ -1,65 +1,70 @@
-
-
 #search-bar {
-    background-color: lightpink;
+    background-color: palegreen;
     height: 40px;
-    width: 800px;
-    margin: 0 auto;
-    line-height: 40px;
-    text-transform: uppercase;
-    font-weight: 600;
-    letter-spacing: 1.5px;
-    
-    display: flex;
-    flex-flow: row nowrap;
-    justify-content: flex-start;
 }
+
+#search-dropdown {
+    height: 201.5px;
+    width: 220px;
+    text-align: center;
+    background-color: palegreen;
+    border-bottom-left-radius: 5%;
+    border-bottom-right-radius: 5%;
+    overflow: hidden;
+    position: relative;
+    z-index: 2;
+
+    display: flex;
+    flex-flow: column nowrap;
+    
+    transition: height 0.3s ease;
+}
+
+#search-dropdown.closed {
+    height: 40px;
+}
+
+#search-title {
+    line-height: 40px;
+}
+
+.search-group {
+    padding: 10px 0;
+    border-bottom: 1.5px solid black;
+}
+
+.input-text {
+    font-size: 12px;
+    letter-spacing: 0.2px;
+}
+
+
+
+
+
+
+
+
+
+
 
 #result-cont {
     display: flex;
     flex-flow: column nowrap;
     align-items: center;
     justify-content: center;
+
 }
-
-#search-drop-down {
-    background-color: lightpink;
-    height: 126px;
-    width: 200px;
-    text-align: center;
-    overflow: hidden;
-    cursor: pointer;
-    border-bottom-right-radius: 5%;
-    border-bottom-left-radius: 5%;
-
-    transition: height 0.3s ease;
-}
-
-#search-drop-down.closed {
-    height: 40px;
-}
-
-#search-title:hover {
-    font-size: 105%;
-    transition: font-size 0.4s ease;
-}
-
-#search-title:hover span{
-    color: white;
-    transition: color 0.2s ease;
-}
-
-.search-section {
-    border-bottom: 2px black solid;
-}
-
 
 .card {
     outline: 5px black solid;
     height: 700px;
     width: 600px;
     margin: 20px 0;
-    border-radius: 40px;
+    border-radius: 40px;    
+    position: relative;
+    z-index: 1;
+
 
     transition: height 0.3s ease;
 }

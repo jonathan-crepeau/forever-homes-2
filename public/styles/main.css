@@ -35,6 +35,8 @@ nav {
     float: right;
     height: 129px;
     width: 250px;
+    position: relative;
+    z-index: 3;
     /* outline: var(--orange) 1px solid; */
 
     text-transform: uppercase;
