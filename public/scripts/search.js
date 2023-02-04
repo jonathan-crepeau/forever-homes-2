@@ -45,20 +45,25 @@ function expandCardClick(event) {
 
 function handleSearchDrop() {
     searchDropdown.classList.toggle('closed');
+    if (!searchDropdown.classList.contains('closed')) {
+        document.getElementById('span-arrow').innerHTML = '&#9650';
+    } else {
+        document.getElementById('span-arrow').innerHTML = '&#9660';
+    }
 }
 
 function handleSearchUpdate(event) {
     let count = 0;
     document.querySelectorAll('.query-param').forEach((input) => {
-        paramsObj[count] = {key: input.id, value: input.value}
-        count += 1;
-        input.value = '';
+        if (input.value) {
+            paramsObj[count] = {key: input.id, value: input.value}
+            count += 1;
+            input.value = '';
+        }
     })
     getPetData(paramsObj);
     searchDropdown.classList.add('closed');
 }
-
-
 
 function verifyUser() {
     fetch('http://localhost:3000/api/v1/verify', {
@@ -145,8 +150,6 @@ function createCards(inputArray) {
     }
 }
 
-
-
 function createQueryString(input) {
 
     fetch('http://localhost:3000/petfinder/v1/test', {
@@ -163,10 +166,11 @@ function createQueryString(input) {
 
 const testObj = {
     0: {key: 'type', value: 'dog'},
-    1: {key: 'color', value: 'black'}
+    1: {key: 'color', value: 'black'},
+    2: {key: 'location', value: "New Hampshire"}
 }
 
 // SECTION - Functions Calls
 verifyUser();
-getToken();
+// getToken();
 

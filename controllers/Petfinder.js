@@ -3,15 +3,16 @@ let tokenTimeStamp = 0;
 let accessToken;
 
 const test = (req, res) => {
-    // res.json({status:200, message:"Test function for Petfinder controller successful.."});
-    // console.log(req.body);
+
     let data = req.body;
-    let string = '?';
+    let queryString = '?';
     for (let x in data) {
         console.log(data[x].key, data[x].value);
-        string = string + `${data[x].key}=${data[x].value}&`;
+        queryString = queryString + `${data[x].key}=${data[x].value}&`;
     }
-    res.json({string});
+    console.log(typeof queryString);
+    queryString = queryString.replace(/ /g, "+");
+    res.json({queryString});
 }
 
 const getToken = async (req, res) => {
@@ -65,6 +66,7 @@ const queryPetData = async (req, res) => {
     for (let x in data) {
         string = string + `${data[x].key}=${data[x].value}&`;
     }
+    string = string.replace(/ /g, '+');
 
     let responseObj;
     console.log(string);
