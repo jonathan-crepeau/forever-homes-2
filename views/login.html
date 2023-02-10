@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/styles/main.css">
     <link rel="stylesheet" href="/styles/login.css">
+    <!-- jQuery CDN -->
+    <script src="https://code.jquery.com/jquery-3.6.3.js" integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM=" crossorigin="anonymous"></script>
     <script defer src="/scripts/app.js"></script>
     <script defer src="/scripts/login.js"></script>
     <title>Forever Homes 2</title>
@@ -21,20 +23,46 @@
         </nav>
     </header>
     <main>
-        <h1>Login</h1>
-        <div id="form-container">
-            <form action="/scripts/login.js" id="login-form">
-                <div class="form-group">
-                    <label for="email">Email:</label>
-                    <input type="email" id="email" name="email" placeholder="email">
-                </div>
-                <div class="form-group">
-                    <label for="password">Password:</label>
-                    <input type="password" id="password" name="password" placeholder="password">
-                </div>
-                <input type="submit" >
-            </form>
+
+        <div id="outer-cont">
+            <div id="inner-cont">
+                <form id="registration-form">
+                    <input type="text" placeholder="name">
+                    <input type="email" placeholder="email">
+                    <input type="password" placeholder="password">
+                    <input type="password" placeholder="password">
+                    <button>create</button> 
+                    <p class="message">Already registered? <a href=#>Sign In</a></p>
+                </form>
+                <form id="login-form">
+                    <input type="email" placeholder="email">
+                    <input type="password" placeholder="password">
+                    <button>login</button>
+                    <p class="message">Not registered? <a href="#">Create an account</a></p>
+                </form>
+            </div>
         </div>
+
+
+
+        <!-- <div id="outer-cont">
+            <h1>Login</h1>
+            <div id="form-container">
+                <form action="/scripts/login.js" id="login-form">
+                    <div class="form-group">
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" name="email" placeholder="email">
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password:</label>
+                        <input type="password" id="password" name="password" placeholder="password">
+                    </div>
+                    <button id="submit-btn" form="login-form">Login</button>
+                </form>
+            </div>
+        </div> -->
+
+        
     </main>
     <footer>Jonathan T Crepeau</footer>
 </body>
