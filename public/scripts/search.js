@@ -172,5 +172,5 @@ const testObj = {
 
 // SECTION - Functions Calls
 verifyUser();
-// getToken();
+getToken();
 
