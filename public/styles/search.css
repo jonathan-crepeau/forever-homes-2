@@ -132,6 +132,19 @@
     font-size: 2.5rem;
 }
 
+.card__writtenDesc {
+    padding: 20px;
+    font-size: 20px;
+}
+
+.tags {
+    font-size: 17px;
+}
+
+.attr {
+    text-transform: uppercase;
+}
+
 img {
     max-height: 380px;
     max-width: 580px;

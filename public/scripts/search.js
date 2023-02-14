@@ -153,6 +153,22 @@ function createCards(inputArray) {
         } else {
             photoSource = inputArray[i].primary_photo_cropped['small'];
         }
+
+        let string = '';
+        for (let a = 0; a < inputArray[i].tags.length - 1; a++) {
+            string = string + `#${inputArray[i].tags[a]} `;
+        }
+
+        let attributesString = '';
+        let attributes = inputArray[i].attributes;
+        for (let x in attributes) {
+            if (attributes[x] !== null) {
+                attributesString = attributesString + `[${x}: ${attributes[x]}] `;
+            }
+        }
+
+        const vettedAttributes = petAttributes(inputArray[i]);
+
         const card = `
             <div class="card closed">
                 <div class="card__photo">
@@ -160,14 +176,24 @@ function createCards(inputArray) {
                 </div>
                 <div class="card__info closed">
                     <div class="card__header">
-                        <h2 class="card__title">${inputArray[i].name}</h2>
+                        <h1 class="card__title">${inputArray[i].name} (${inputArray[i].species})</h1>
                         <p class="card__btn">&#9660</p>
                         <p class="card__fav">&#9734</p>
                     </div>
-                    <div class="card__writtenDesc"></div>
+                    <div class="card__writtenDesc">
+                        <p>${inputArray[i].gender} • ${inputArray[i].age} • ${inputArray[i].size}</p>
+                        <p>${inputArray[i].contact.address.city}, ${inputArray[i].contact.address.state}</p>
+                        <p class="tags">${string}<p>
+                        <br>
+                        <p>Breed: ${inputArray[i].breeds.primary}</p>
+                        <p class="attr">${vettedAttributes}</p>
+                        
+                    </div>
                 </div>
             </div>
         `
+        
+        
     resultsContainer.insertAdjacentHTML('beforeend', card)    
     }
 }
@@ -186,11 +212,20 @@ function createQueryString(input) {
         .catch((error) => console.log(error));
 }
 
-const testObj = {
-    0: {key: 'type', value: 'dog'},
-    1: {key: 'color', value: 'black'},
-    2: {key: 'location', value: "New Hampshire"}
+function petAttributes(inputObj) {
+    const attributes = inputObj.attributes;
+    let string = '';
+    for (let attr in attributes) {
+        if (attributes[attr] !== null) {
+            string = string + `${attr}: ${attributes[attr]} <br>`;
+        }
+    }
+    string = string.replace(/true/g, '<span>&#9989;</span>');
+    string = string.replace(/false/g, '<span>&#10060;</span>')
+    return string;
 }
+
+
 
 // SECTION - Functions Calls
 verifyUser();
