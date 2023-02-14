@@ -56,6 +56,7 @@ function expandCardClick(event) {
 function handleFavorite(event) {
     if (event.target.matches('.card__fav')) {
         event.target.classList.toggle('favorite');
+        event.target.classList.toggle('starColor');
         if (!event.target.classList.contains('favorite')) {
             event.target.innerHTML = '&#9734';
         } else {

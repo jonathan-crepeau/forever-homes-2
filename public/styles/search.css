@@ -145,6 +145,10 @@
     text-transform: uppercase;
 }
 
+.starColor {
+    color: #08DB84;
+}
+
 img {
     max-height: 380px;
     max-width: 580px;
