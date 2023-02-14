@@ -14,6 +14,7 @@ const searchButton = document.getElementById('search-btn');
 // SECTION - Event Listeners
 logoutButton.addEventListener('click', handleLogoutClick);
 resultsContainer.addEventListener('click', expandCardClick);
+resultsContainer.addEventListener('click', handleFavorite);
 searchTitle.addEventListener('click', handleSearchDrop);
 searchButton.addEventListener('click', handleSearchUpdate);
 
@@ -38,8 +39,28 @@ function handleLogoutClick(event) {
 function expandCardClick(event) {
     if (event.target.matches('.card__btn')) {
         // console.log('Expand card.');
-        event.target.closest('.card').classList.toggle('closed');
-        event.target.closest('.card__info').classList.toggle('closed');
+        const card = event.target.closest('.card');
+        const cardInfo = event.target.closest('.card__info');
+        const expandButton = event.target.closest('.card__btn');
+
+        card.classList.toggle('closed');
+        cardInfo.classList.toggle('closed');
+        if (!cardInfo.classList.contains('closed')) {
+            expandButton.innerHTML = '&#9650';
+        } else {
+            expandButton.innerHTML = '&#9660';
+        }
+    }
+}
+
+function handleFavorite(event) {
+    if (event.target.matches('.card__fav')) {
+        event.target.classList.toggle('favorite');
+        if (!event.target.classList.contains('favorite')) {
+            event.target.innerHTML = '&#9734';
+        } else {
+            event.target.innerHTML = '&#9733';
+        }
     }
 }
 
@@ -141,6 +162,7 @@ function createCards(inputArray) {
                     <div class="card__header">
                         <h2 class="card__title">${inputArray[i].name}</h2>
                         <p class="card__btn">&#9660</p>
+                        <p class="card__fav">&#9734</p>
                     </div>
                     <div class="card__writtenDesc"></div>
                 </div>

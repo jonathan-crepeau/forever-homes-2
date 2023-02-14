@@ -84,10 +84,6 @@ main {
     margin: 15px 0 0;
 }
 
-.message a {
-    text-decoration: none;
-}
-
 #registration-form {
     display: none;
 }

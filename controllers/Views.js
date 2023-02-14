@@ -12,11 +12,11 @@ const root = (req, res) => {
     });
 }
 
-const signup = (req, res) => {
-    res.sendFile('/views/signup.html', {
-        root: `${__dirname}/../`
-    });
-}
+// const signup = (req, res) => {
+//     res.sendFile('/views/signup.html', {
+//         root: `${__dirname}/../`
+//     });
+// }
 
 const login = (req, res) => {
     res.sendFile('/views/login.html', {
@@ -36,4 +36,4 @@ const profile = (req, res) => {
     });
 }
 
-export { test, root, signup, login, search, profile}
+export { test, root, login, search, profile}
