@@ -3,20 +3,31 @@ console.log('login.js reporting for duty..');
 // SECTION - Global Variables (Bindings)
 const loginForm = document.getElementById("login-form");
 const signupForm = document.getElementById("registration-form");
+const inputs = document.querySelectorAll('.input-field');
 
 
+// SECTION - Attach event listener to each input field:
+inputs.forEach((input) => {
+    input.addEventListener('input', handleWriting)
+})
+
+
+// SECTION - Animate form when switching between the two:
 $('.message a').click(function(){
     $('form').animate({height: 'toggle', opacity: 'toggle'}, 'slow');
 });
 
+// SECTION - Handle submit clicks for EITHER form:
 $('button').click(function(event) {
     event.preventDefault();
+    document.querySelectorAll('.alert').forEach((alert) => alert.remove());
+
+
+// SECTION - Handle login form & make fetch call if successful:
     if (event.target.matches('#login')) {
-        console.log('login button clicked!');
         event.preventDefault();
         let formIsValid = true;
         const userData = {};
-    
     
         const formInputs = [...loginForm.elements];
         formInputs.forEach((input) => {
@@ -24,10 +35,18 @@ $('button').click(function(event) {
             if (input.type !== 'submit' && input.value === "") {
                 formIsValid = false;
                 input.classList.add('input-error');
-            } else if (input.type === "password" && input.value.length < 4) {
-                formIsValid = false;
-                input.classList.add('input-error');
-            }
+                if (!input.nextElementSibling.classList.contains('alert')) {
+                    input.insertAdjacentHTML('afterend', `
+                        <div class="alert ${input.id}-message">
+                            Please include a ${input.placeholder}
+                        </div>
+                    `);
+                }
+            } 
+            // else if (input.type === "password" && input.value.length < 4) {
+            //     formIsValid = false;
+            //     input.classList.add('input-error');
+            // }
     
             if (formIsValid) {
                 userData[input.name] = input.value;
@@ -55,23 +74,30 @@ $('button').click(function(event) {
         event.preventDefault();
         let userData = {};
         let isFormValid = true;
-        console.log('Submit button clicked.');
     
-        // Clear Alert Messages
-        document.querySelectorAll('.alert').forEach((alert) => alert.remove());
-    
-        // 3. Get Form Values
         formInputs = [...signupForm.elements];
-    
-        // 4. Validate Values
         formInputs.forEach((input) => {
             input.classList.remove('input-error');
             if (input.type !== 'submit' && input.value === "") {
                 isFormValid = false;
                 input.classList.add('input-error');
+                if (!input.nextElementSibling.classList.contains('alert')) {
+                    input.insertAdjacentHTML('afterend', `
+                        <div class="alert ${input.id}-message">
+                            Please include a ${input.placeholder}
+                        </div>
+                    `);
+                }
             } else if (input.type === "password" && input.value.length < 4) {
                 isFormValid = false;
                 input.classList.add('input-error');
+                if (!input.nextElementSibling.classList.contains('alert')) {
+                    input.insertAdjacentHTML('afterend', `
+                        <div class="alert ${input.id}-message">
+                            ${input.placeholder} must be at least 5 characters long
+                        </div>
+                    `);
+                }
             }
     
             // NOTE: see if Auth signup controller ignores the submit input, otherwise the next line should be edited to "if (isFormValid && input.type !== "submit") {}":"
@@ -99,3 +125,12 @@ $('button').click(function(event) {
         }
     }
 });
+
+function handleWriting(event) {
+    event.preventDefault();
+    // console.log('Writing in an input');
+    event.target.classList.remove('input-error');
+    if (document.querySelector(`.${event.target.id}-message`)) {
+        document.querySelector(`.${event.target.id}-message`).remove();
+    }
+}
