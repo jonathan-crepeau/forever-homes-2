@@ -1,6 +1,69 @@
 :root {
-    --orange: #FF4600;
-    --blue: #0045FF;
+
+/* Primary Colors */
+--primary-900: #0000ef;
+--primary-800: #0013f2;
+--primary-700: #0019f7;
+--primary-main: #3422ff;
+--primary-500: #4926ff;
+--primary-400: #724cff;
+--primary-300: #926fff;
+--primary-200: #b49aff;
+--primary-100: #d3c3ff;
+--primary-50: #efe6ff;
+    
+/* Triadic Purple: */
+--purple-900: #8600c8;
+--purple-800: #af00d0;
+--purple0-700: #c500d4;
+--purple-600: #dd00d8;
+--purple-500: #ee00db;
+--purple-400: #fc00e8;
+--purple-main: #ff22ed;
+--purple-200: #ff7ef1;
+--purple-100: #ffb6f6;
+--purple-50: #ffe2fc;
+
+/* Triadic Red */
+--red-900: #c40003;
+--red-800: #d20915;
+--red-700: #de181e;
+--red-600: #f02723;
+--red-main: #ff3422;
+--red-400: #fa4942;
+--red-300: #f06d6a;
+--red-200: #f89794;
+--red-100: #ffcbcf;
+--red-50: #ffeaed;
+
+/* Black Palette */
+--black-main: #000000;
+--black-800: #262626;
+--black-700: #434343;
+--black-600: #555555;
+--black-500: #7b7b7b;
+--black-400: #9d9d9d;
+--black-300: #c4c4c4;
+--black-200: #d9d9d9;
+--black-100: #e9e9e9;
+--black-50: #f5f5f5;
+
+/* Failure Palette */
+--fail-900: #c40003;
+--fail-700: #de181e;
+--fail-main: #ff3422;
+--fail-300: #f06d6a;
+--fail-100: #ffcbcf;
+--fail-50: #ffeaed;
+
+/* Success Palette */
+--succ-800: #00be00;
+--succ-600: #00ea00;
+--succ-main: #22ff34;
+--succ-200: #a5ff9a;
+--succ-50: #ebffe7;
+
+
 }
 
 * {
@@ -17,7 +80,7 @@ body {
 
 header {
     height: 100px;
-    background-color: var(--blue);
+    background-color: var(--primary-main);
 
     display: flex;
     flex-flow: row nowrap;
@@ -33,7 +96,7 @@ nav {
 
 #drop-down {
     float: right;
-    height: 129px;
+    height: 86px;
     width: 250px;
     position: relative;
     z-index: 3;
@@ -57,7 +120,7 @@ nav {
 }
 
 .nav-link {
-    border-bottom: 3px solid black;
+    border-bottom: 3px solid var(--black-main);
 }
 
 #drop-down li a {
@@ -66,7 +129,7 @@ nav {
     height: 40px;
     line-height: 40px;
 
-    background-color: var(--blue);
+    background-color: var(--primary-main);
     color: white;
 }
 
@@ -120,7 +183,7 @@ main {
 footer {
     height: 30px;
     line-height: 30px;
-    background-color: grey;
-    color: white;
+    background-color: var(--primary-50);
+    color: var(--black-800);
     text-align: center;
 }

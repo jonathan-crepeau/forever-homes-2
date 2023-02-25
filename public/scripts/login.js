@@ -128,7 +128,6 @@ $('button').click(function(event) {
 
 function handleWriting(event) {
     event.preventDefault();
-    // console.log('Writing in an input');
     event.target.classList.remove('input-error');
     if (document.querySelector(`.${event.target.id}-message`)) {
         document.querySelector(`.${event.target.id}-message`).remove();

@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300&family=Open+Sans:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300&family=Open+Sans:wght@300;600&display=swap');
 
 main {
     display: flex;
@@ -7,39 +7,6 @@ main {
     justify-content: center;
 }
 
-/* ANCHOR - v1 styling */
-
-/* #outer-cont {
-    border: black 2px solid;
-    height: 300px;
-    width: 300px;
-    border-radius: 20px;
-    box-shadow: 10px 5px 5px black;
-
-    display: flex;
-    flex-flow: column nowrap;
-    align-items: center;
-    justify-content: center;
-} */
-
-/* #login-form {
-    text-align: center;
-} */
-
-/* .form-group {
-    text-align: right;
-    padding: 5px 0;
-} */
-
-/* #submit-btn {
-    width: 100px;
-    background-color: var(--blue);
-    color: white;
-    margin: 10px 0;
-} */
-
-
-/* ANCHOR - v2 styling */
 
 #outer-cont {
     width: 350px;
@@ -48,7 +15,7 @@ main {
 
 #inner-cont {
     max-width: 360px;
-    background-color: peachpuff;
+    background-color: var(--black-200);
     padding: 35px;
     position: relative;
     text-align: center;
@@ -58,7 +25,7 @@ main {
     font-family: "Open Sans", sans-serif;
     width: 100%;
     margin: 0 0 15px;
-    background-color: #f2f2f2;
+    background-color: var(--black-50);
     border: 0;
     outline: 0;
     box-sizing: border-box;
@@ -66,10 +33,14 @@ main {
     font-size: 14px;
 }
 
+.input-field::placeholder {
+    color: var(--black-800);
+}
+
 #inner-cont button {
     font-family: "Open Sans", sans-serif;
-    background-color: var(--blue);
-    color: white;
+    background-color: var(--succ-600);
+    color: var(--black-main);
     border: 0;
     outline: 0;
     width: 100%;
@@ -80,8 +51,13 @@ main {
 }
 
 .message {
-    font-size: 12px;
+    font-size: 14px;
     margin: 15px 0 0;
+}
+
+.message a {
+    text-decoration: underline;
+    color: var(--primary-main);
 }
 
 #registration-form {
@@ -92,17 +68,17 @@ main {
     margin: -13px 10px 10px;
     float: left;
     box-sizing: border-box;
-    color: #c21f34;
+    color: var(--fail-900);
     transition: all 0.2s ease;
 }
 
 .input-error {
-    border: 2px solid #c21f34;
-    background-color: #ebbcc2;
+    border: 2px solid var(--fail-900);
+    background-color: var(--fail-50);
 }
 
 .input-error::placeholder {
-    color: black;
+    color: var(--black-main);
     font-weight: 600;
-    letter-spacing: 0.px;
+    letter-spacing: 0.1px;
 }
