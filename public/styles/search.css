@@ -1,26 +1,32 @@
+/* ANCHOR ------------------------------------*\
+  # Navigation Drop Down Menu
+\*--------------------------------------------*/
+
+/* NOTE - To accomodate for the height of the 'logout' section of the drop-down navigation. */
+
 #drop-down {
     height: 129px;
 }
 
-#search-bar {
-    background-color: palegreen;
-    height: 40px;
-}
+
+
+
+
+/* ANCHOR ------------------------------------*\
+  #'Refine Search' Drop Down
+\*--------------------------------------------*/
 
 #search-dropdown {
-    height: 201.5px;
-    width: 220px;
-    text-align: center;
-    background-color: palegreen;
-    border-bottom-left-radius: 5%;
-    border-bottom-right-radius: 5%;
+    width: 100%;
+    background-color: var(--black-200);
+    margin: 0 auto;
+
     overflow: hidden;
     position: relative;
     z-index: 2;
-
     display: flex;
     flex-flow: column nowrap;
-    
+    align-items: center;
     transition: height 0.3s ease;
 }
 
@@ -29,27 +35,16 @@
 }
 
 #search-title {
+    font-size: 20px;
     line-height: 40px;
 }
 
 .search-group {
-    padding: 10px 0;
+    font-size: 20px;
+    letter-spacing: 0.2px;
+    padding: 15px 0;
     border-bottom: 1.5px solid black;
 }
-
-.input-text {
-    font-size: 12px;
-    letter-spacing: 0.2px;
-}
-
-
-
-
-
-
-
-
-
 
 
 #result-cont {
@@ -60,7 +55,16 @@
 
 }
 
-.card {
+
+
+
+
+/* ANCHOR ------------------------------------*\
+  #Cards - Individual Styling Version1
+\*--------------------------------------------*/
+
+
+/* .card {
     outline: 5px black solid;
     height: 700px;
     width: 600px;
@@ -110,7 +114,7 @@
 
 .card__header {
     /* background-color: white; */
-    border-top: 2px black solid;
+    /* border-top: 2px black solid;
     border-bottom: 2px black solid;
     height: 50px;
     line-height: 50px;
@@ -158,4 +162,71 @@ img {
     max-width: 580px;
     border-radius: 5%;
     border: groove 3px black;
+} */
+
+
+
+
+
+/* ANCHOR ------------------------------------*\
+  #Cards - Individual Styling Version2
+\*--------------------------------------------*/
+
+.card {
+    height: 700px;
+    width: 600px;
+    box-sizing: border-box;
+    background-color: var(--black-200);
+    margin: 25px;
+}
+
+.card__header {
+    height: 120px;
+    width: 100%;
+    background-color: var(--red-200);
+
+    display: flex;
+    flex-flow: row nowrap;
+}
+
+.card__pet-photo {
+    height: 120px;
+    width: 120px;
+    border: 1px red solid;
+    box-sizing: border-box;
+    padding: 10px;
+}
+
+.card__pet-photo img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+    box-sizing: border-box;
+    border: 3px black dashed;
+}
+
+.card__pet-titles {
+    height: 120px;
+    width: calc(100% - 240px);
+    border: 1px blue solid;
+    box-sizing: border-box;
+}
+
+.card__favorite-icon {
+    height: 120px;
+    width: 120px;
+    border: 1px red solid;
+    box-sizing: border-box;
+}
+
+.card__hero-photo {
+    height: 340px;
+    width: 100%;
+}
+
+.card__text {
+    height: 240px;
+    width: 100%;
+    background-color: var(--purple-200);
 }

@@ -1,3 +1,7 @@
+/* ANCHOR ------------------------------------*\
+  #root section
+\*--------------------------------------------*/
+
 :root {
 
 /* Primary Colors */
@@ -62,9 +66,14 @@
 --succ-main: #22ff34;
 --succ-200: #a5ff9a;
 --succ-50: #ebffe7;
-
-
 }
+
+
+
+
+/* ANCHOR ------------------------------------*\
+  #Overall through Header Elements:
+\*--------------------------------------------*/
 
 * {
     padding: 0;
@@ -149,36 +158,26 @@ nav {
     margin-left: -50px;
 }
 
-/* SECTION - <main> element: */
+
+
+
+/* ANCHOR ------------------------------------*\
+  # Main Element
+\*--------------------------------------------*/
 
 main {
     min-height: calc(100vh - 100px);
-    width: 800px;
+    max-width: 800px;
     margin: 0 auto;
     /* outline: 1px black solid; */
 }
 
-/* .alert {
-    margin: -13px 10px 10px;
-    float: left;
-    box-sizing: border-box;
-    color: #c21f34;
-    transition: all 0.2s ease;
-}
-
-.input-error {
-    border: 2px solid #c21f34;
-    background-color: #ebbcc2;
-}
-
-.input-error::placeholder {
-    color: black;
-    font-weight: 600;
-    letter-spacing: 0.px;
-} */
 
 
-/* SECTION - <footer> element: */
+
+/* ANCHOR ------------------------------------*\
+  # Footer Element
+\*--------------------------------------------*/
 
 footer {
     height: 30px;
